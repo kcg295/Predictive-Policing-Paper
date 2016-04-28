@@ -1,0 +1,208 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Simple Sectioned Essay Template
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing essay content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+
+\usepackage[margin=1in]{geometry} % Required to change the page size to A4
+\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+
+\usepackage{graphicx} % Required for including pictures
+
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{hyperref}
+%\usepackage{apacite}
+
+\linespread{1.2} % Line spacing
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+
+\bibliographystyle{abbrv}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+
+\textsc{\LARGE New York University}\\[1.5cm] % Name of your university/college
+\textsc{\Large Big Data: Critical Perspectives}\\[0.5cm] % Major heading such as course name
+\textsc{\large Project Proposal}\\[0.5cm] % Minor heading such as course title
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Predictive Policing - Opaqueness, Impact and Legal Standards}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Kevin \textsc{Gallagher} % Your name
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Professor:} \\
+Helen \textsc{Nissenbaum} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\clearpage\thispagestyle{empty}\addtocounter{page}{-1}
+\tableofcontents % Include a table of contents
+\newpage % Begins the essay on a new page instead of on the same page as the table of contents 
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}\label{sec:introduction} % Major section
+
+One friday morning in July of 2011, two women were arrested in Santa Cruz, California after being caught peering into cars parked in a local parking garage. In addition to the suspicious nature of their activities, one of the women arrested had outstanding warrants, and the other was in possession of drugs. Though arrests of this nature are rarely reported on the news, this particular arrest was an exception due to its peculiar circumstances. These arrests were made after officers were dispatched beause a computer algorithm predicted the area as likely to be effected be crime. \cite{nyt} 
+
+This technology, called Predictive Policing, is definied as the application of analytical techniques, particularly quantitative techniques, to identify promising targets for police intervention and prevent or solve crime. \cite{perryetal} The remainer of this paper will be organized as follows, Section \ref{sec:predictivepolicing} will define predictive policing.
+% and give a brief outline of the current relevant literature.
+Section \ref{sec:proposedresearch} will propose specific research questions related to the topic of predictive policing and its implications and impacts.
+%------------------------------------------------
+\section{Predictive Policing: Definition and Taxonomy} \label{sec:predictivepolicing}% Sub-section
+
+As mentioned in Section \ref{sec:introduction}, predictive policing is by Perry et al. to be the application of analytical techniques, particularly quantitative techniques, to identify promising targets for police intervention and prevent or solve crime. In the book \textit{Predictive Policing: The role of crime forcasting in law enforcement operations}, Perry et al. present a taxonomy of predictive policing methods. This taxonomy breaks predictive policing into four categories: \cite{perryetal}
+
+\begin{enumerate}
+\item Methods for predicting future crimes
+\item Methods for predicting future offenders
+\item Methods for predicting perpetrator's identities
+\item Methods for predicting victims of crimes
+\end{enumerate}
+
+Category one, methods for predicting future crimes, focuses on predicting the times and places in which crimes are anticipated to occur. Category two, methods for predicting future offenders, focuses on predicting individuals and groups that are ``at risk of offending in the future.'' Category three, methods for predicting perpetrator's identities, focuses on identifying individuals who have committed past crimes. Lastly category four, methods for predicting victims of crimes, focuses on predicting individuals and groups that are ``likely to become victims of crime.''
+
+For the purpose of this paper, methods focusing on predicting ``hot spots'' for crime will not be considered. Instead, the proposed research will focus on how predictive policing affects individuals, rather than times and locations.
+
+
+
+%------------------------------------------------
+
+%\subsection{Subsection 2} % Sub-section
+
+
+
+%------------------------------------------------
+
+%\subsubsection{Subsubsection 1} % Sub-sub-section
+
+
+
+%------------------------------------------------
+
+%\subsubsection{Subsubsection 2} % Sub-sub-section
+
+
+
+%----------------------------------------------------------------------------------------
+%	MAJOR SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Proposed Research}\label{sec:proposedresearch} % Major section
+
+Though predictive policing, in many ways, is simply an technological extention of work already done by police officers and other law enforcement officials (such as identifying hot spots and high profile repeat offenders)\cite{perryetal}, the automation of these processes introduce many questions. In particular, this proposal is intended to begin research into the four areas listed below that are affected by predictive policing.
+
+\begin{enumerate}
+\item \textbf{Opaqueness and Freedom of Information:} To what extent are the operations of these technologies understood by the departments who are using them? To what extent are they understood by the general public?
+\item \textbf{Fairness and Civil Liberties:} To what extent do the inputs of the classification or regression algorithms reflect social, economical and racial biases that currently exist? How does this affect minoirty groups? 
+\item \textbf{Impact:} How effective is predictive policing? How is its effectiveness measured, and why? Do these measurements make sense?
+\item \textbf{Due Process and Legal Standards:} In what ways does predictive policing change our understanding of current standards such as reasonable suspicion or probable cause? What affect will these have on individuals within communities utilizing these technologies? Who is held accountable for harms created by such algorithms?
+\end{enumerate}
+
+All of these questions are interrelated, as the accuracy, impact, fairness and opaqueness of predictive policing will likely affect the impact it has on due process and current legal standards. 
+
+This paper will draw on many related works published on predictive policing, including the Rand Corporation report written by Perry et al. \cite{perryetal}, which presents a definition of taxonomy of preictive policing, discusses the technical means through which predictive policing is performed, and provides advice to law enforcement personel with regards to how to technology is meant to be used. In addition, this work will draw on work presented in the article ``Data Derivatives On the Emergence of a Security Risk Calculus for Our Times'' written by Louise Amoore \cite{amoore2011data}, which analyzes the derivation of risk scores for the purpose of national security. More, this work will draw on work presented in the 2010 National Research Council report entitled ``Protecting individual Privacy in the  Struggle against terrorists: a Framework for Program assessment'' written by Perry and Vest \cite{perryprotecting}, which analyzes and discusses the balance between national security and civil liberties, including privacy. This work will also draw on work done by Andrew Guthrie Ferguson which details possible effects of predictive policing on the standard of reasonable suspicion. \cite{ferguson2012predictive} Lastly, this work will also draw on various news articles, technical blog posts and other books and articles on the subjects of predictive policing, machine learning and data mining. \cite{hildebrandt2013privacy} \cite{hardt} \cite{robinson2014civil}
+
+In addition, this work will also attempt to obtain information about current practices, technological state of the art and other related topics from law enforcement agencies, attorneys, civil rights groups and other individuals and organizations familiar with the topic of predictive policing.%------------------------------------------------
+
+%\subsection{Subsection 1} % Sub-section
+
+%\subsubsection{Subsubsection 1} % Sub-sub-section
+
+
+
+%------------------------------------------------
+
+%\subsubsection{Subsubsection 2} % Sub-sub-section
+
+
+
+%------------------------------------------------
+
+%\subsubsection{Subsubsection 3} % Sub-sub-section
+
+
+%----------------------------------------------------------------------------------------
+%	MAJOR SECTION X - TEMPLATE - UNCOMMENT AND FILL IN
+%----------------------------------------------------------------------------------------
+
+%\section{Content Section}
+
+%\subsection{Subsection 1} % Sub-section
+
+% Content
+
+%------------------------------------------------
+
+%\subsection{Subsection 2} % Sub-section
+
+% Content
+
+%----------------------------------------------------------------------------------------
+%	CONCLUSION
+%----------------------------------------------------------------------------------------
+
+%\section{Conclusion} % Major section
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+\newpage
+\bibliography{references}
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
