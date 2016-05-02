@@ -35,6 +35,12 @@
 
 %\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
 
+\usepackage{soul} %for \hl to highlight
+%\usepackage[final,inline,nomargin]{fixme}
+\usepackage[draft,inline,nomargin]{fixme}
+\newcommand{\hlfixme}[1]{\fxfatal{\hl{#1}}}
+\newcommand{\hlfxnote}[1]{\fxnote{\hl{#1}}}
+
 \graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
 
 \bibliographystyle{abbrv}
@@ -96,9 +102,13 @@ Helen \textsc{Nissenbaum} % Supervisor's Name
 
 One Friday morning in July of 2011, two women were arrested in Santa Cruz, California after being caught peering into cars parked in a local parking garage. In addition to the suspicious nature of their activities, one of the women arrested had outstanding warrants, and the other was in possession of drugs. Though arrests of this nature are rarely reported on the news, this particular arrest was an exception due to its peculiar circumstances. These arrests were made after officers were dispatched beause a computer algorithm predicted the area as likely to be effected be crime. \cite{nyt} 
 
-This technology, called Predictive Policing, is definied as the application of analytical techniques, particularly quantitative techniques, to identify promising targets for police intervention and prevent or solve crime. \cite{perryetal} The remainer of this paper will be organized as follows, Section \ref{sec:predictivepolicing} will define predictive policing.
+\hlfixme{add more cases here.}
+
+This technology, called Predictive Policing, is definied as the application of analytical techniques, particularly quantitative techniques, to identify promising targets for police intervention and prevent or solve crime. \hlfixme{introduce the main purpose of this paper, what it will address and how. Then do layout.} \cite{perryetal} The remainer of this paper will be organized as follows, Section \ref{sec:predictivepolicing} will define predictive policing.
 % and give a brief outline of the current relevant literature.
 Section \ref{sec:proposedresearch} will propose specific research questions related to the topic of predictive policing and its implications and impacts.
+
+\hlfixme{Some metrics. Not 100\% sure what this means. Talk to Helen about it.}
 %------------------------------------------------
 \subsection{Predictive Policing: Definition and Taxonomy} \label{sec:predictivepolicing}% Sub-section
 
@@ -114,6 +124,9 @@ As mentioned in Section \ref{sec:introduction}, predictive policing is by Perry 
 Category one, methods for predicting future crimes, focuses on predicting the times and places in which crimes are anticipated to occur. Category two, methods for predicting future offenders, focuses on predicting individuals and groups that are ``at risk of offending in the future.'' Category three, methods for predicting perpetrator's identities, focuses on identifying individuals who have committed past crimes. Lastly category four, methods for predicting victims of crimes, focuses on predicting individuals and groups that are ``likely to become victims of crime.''
 
 For the purpose of this paper, methods focusing on predicting ``hot spots'' for crime will not be considered. Instead, the proposed research will focus on how predictive policing affects individuals, rather than times and locations.
+
+\subsection{Due Process}
+\hlfixme{Introduce the ideas of due process here, and why they are important. Inclue defition from OED and do a quick lit review. Maybe ask Jessica.}
 
 
 
