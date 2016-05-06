@@ -30,8 +30,9 @@
 
 \usepackage{hyperref}
 %\usepackage{apacite}
+\usepackage{tikz}
 
-\linespread{1.2} % Line spacing
+\linespread{1} % Line spacing
 
 %\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
 
@@ -98,17 +99,20 @@ Helen \textsc{Nissenbaum} % Supervisor's Name
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
 
+\begin{abstract}
+The abstract will go here.
+\end{abstract}
+\newpage
 \section{Introduction}\label{sec:introduction} % Major section
 
 One Friday morning in July of 2011, two women were arrested in Santa Cruz, California after being caught peering into cars parked in a local parking garage. In addition to the suspicious nature of their activities, one of the women arrested had outstanding warrants, and the other was in possession of drugs. Though arrests of this nature are rarely reported on the news, this particular arrest was an exception due to its peculiar circumstances. These arrests were made after officers were dispatched beause a computer algorithm predicted the area as likely to be effected be crime. \cite{nyt} 
+This technology, called Predictive Policing, is definied as the application of analytical techniques, particularly quantitative techniques, to identify promising targets for police intervention and prevent or solve crime. \cite{perryetal} As such, predictive policing can be seen as a branch of ``Big Data'' or ``Data Science,'' the collection and analysis of large quantities of data to form predictive tools.
 
-%\hlfixme{add more cases here.}
-
-This technology, called Predictive Policing, is definied as the application of analytical techniques, particularly quantitative techniques, to identify promising targets for police intervention and prevent or solve crime. \cite{perryetal} As such, predictive policing can be seen as a branch of ``Big Data'' or ``Data Science,'' the collection and analysis of large quantities of data to form predictive tools. The purpose of this paper is to study the effect of predictive policing and big data on due process in libral democracies. % through a case study of the \hlfixme{n} cases mentioned above.
+The purpose of this paper is to analyze the effect of predictive policing on due process. To achieve this, the effects of predictive policing will be viewed through a multidisciplinary eye. Legal literature will be reviewed to define and discuss the role of due process in liberal democracies, psychology literature will be reviewed to discuss conceptual models of thinking and computer science literature will be discussed to discuss the inner workings of machine learning. In order to tie all of these different disciplines together, this paper discusses all of them through the lense of probability and liklihood.
 
 The remainer of this paper will be organized as follows, Section \ref{subsec:predictivepolicing} will define predictive policing.
 % and give a brief outline of the current relevant literature.
-Section \ref{subsec:dueprocess} will discuss the role of due process in liberal democracies and why it is important. In Section \ref{sec:mainbody} will review the current relevant literature and address the relevant questions posed in the introduction. Finally, in Section \ref{sec:conclusion} we conclude.
+Section \ref{subsec:dueprocess} will define due process and discuss its role in liberal democracies. Section \ref{subsec:machinelearning} will discuss machine learning and probability and their roles in predictive policing. Section \ref{subsec:cognitive} will introduce elements of cognitive psychology. Section \ref{sec:oldvnew} will discuss the changes to due process introduced by predictive policing. Finally, Section \ref{sec:conclusion} concludes.
 
 %\hlfixme{Some metrics. Not 100\% sure what this means. Talk to Helen about it.}
 %------------------------------------------------
@@ -162,7 +166,41 @@ Substantive due process is ``[a] doctrine holding that the 5th and 14th Amendmen
 
 In modern policing, two legal standards keep the actions of law enforcement agencies in check: reasonable suspicion and probable cause. Reasonable suspicion is the standard that must be met in order for law enforcement officials to justify brief stops and detentions, but not full searches. \cite{wex_suspicion} Reasonable suspicion must be based on ``specific and articulable facts... taken together with rational inferences from those facts,'' which must be associated with a particular individual. \cite{terry} In order to receive a warrant for a search or to make an arrest, a law enforcement agent must meet the standard of probable cause. Probable cause requires a ``reasonable basis for believing that a crime may have been committed (for an arrest) or when evidence of the crime is present in the place to be searched (for a search).'' \cite{wex_cause} These standards keep the police from arbitrarily targeting individuals for investigation of crimes, instead requiring reasons for the infringement on their rights.
 
-Until the era of big data began, actions taken by police were based on specific facts and tips provided by the circumstances of the crime or by witnesses of the crime the law enforcement agents were investigating. Because of this, police were able to articulate specific facts and circumstances that lead to the reasonable suspicion for brief stops or detentions and probable cause in order to obtain a warrant. However, the current use of big data challenges these well established standards and overall due process. This paper will attempt to address how big data and predictive policing change due process and the standards of reasonable suspicion and probable cause. 
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+% a straight line segment
+\draw[latex-latex] (0,0) -- (10,0);
+% the ticks and their labels
+\foreach \x  in {0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9}
+  \draw[xshift=\x*10 cm] (0pt,2pt) -- (0pt,-1pt) node[below,fill=white] {\the\numexpr\x};
+% the thicker segment
+%\draw[ultra thick] (2.06,0) -- (8.94,0);
+% the labels
+%\node[fill=white,draw=black,circle,inner sep=2pt,label=above:{$p_1=.25$}] at (2.5,0) {};
+%\node[fill=white,draw=black,circle,inner sep=2pt,label=above:{$p_2=.75$}] at (7.5,0) {};
+%\node[fill=black,draw=black,circle,inner sep=2pt, label=below:{0} at (0,0) {};
+%\node[fill=black,draw=black,circle,inner sep=2pt, label=below:{1} at (10,0) {};
+%\node at (5.5,-0.8) {$\mu$};
+\draw (2.5,0) -- (2.5,1);
+\draw (7.5,0) -- (7.5,1);
+\node [label=above:{A}] at (1.5,0.5) {};
+\node [label=above:{B}] at (5,0.5) {};
+\node [label=above:{C}] at (8.5,0.5) {};
+\end{tikzpicture}
+\caption{The number line seperated into three sections by $p_1$ and $p_2$.}
+\label{fig:numberline}
+\end{center}
+\end{figure}
+
+To frame this into the discussion of probabilities, we can think of redefining reasonable suspicion and probable cause as probability threshold values $p_1$ and $p_2$ respectively, where $0 < p_1 < p_2 < 1$, where the values of $p_1$ and $p_2$ are defined by societal norms, legislation and case law. (Picking these values is not trivial, though the abstraction is still useful; we will not discuss the values of $p_1$ or $p_2$ in this paper.) These values divide a number line on the interval [0,1] into three parts, as shown (with example values of $p_1$ and $p_2$ in Figure \ref{fig:numberline}. If the perceived probability $P$ (we will define this term contextually in both Sections \ref{subsec:cognitive} and \ref{subsec:machinelearning}) is greater than $p_1$, but less than $p_2$, (i.e. $p_2 \geq P > p_1$), only the standard of reasonable suspicion is met. This can be seen as section B of the numberline. If the perceived probability is above $p_2$ (i.e. $P > p_2$), the standards of probable cause and reasonable suspicion are met. This can be seen as section C of the number line. This reflects the fact that reasonable suspicion is a lesser standard than probable cause. If the perceived probability is less than $p_1$ (i.e. $P \leq p_1$), neither probable cause nor reasonable suspicion are met. This corresponds to section A of the number line. Though this numerical definition of these two standards may seem overly complex, they are necessary to tie together the disciplines of law, psychology and computer science.
+
+\subsection{Cognitive Psychology} \label{subsec:cognitive}
+In order to understand judgements made by police before the creation of predictive policing, one must understand how to mind deals with decisions of a statistical nature. These ideas are detailed greatly by the work of Kahneman and Tversky, two psychologists who created and studied a useful model of human statistical thinking. This section briefly outlines the work done by Kahneman and Tversky in this field and is based entirely on Khaneman's book \textit{Thinking Fast and Slow}.\cite{kahneman}
+
+In \textit{Thinking Fast and Slow}, Kahenman describes his work with Tversky in different areas of psychology. The central thesis of the book, and of Kahenman and Tversky's work itself, is the idea of a human's thought process being seperated into two modes of thought, called ``system 1 and system 2'' both in the academic literature and in the book itself. In the book, Kahneman explains that system 1 is fast and effortless. It acts as a statistician, counting occurences and making quick predictions and reactions based on input stimuli. As such, it is trained over many years of input data and outcomes, calculating correlations and storing them for later use. System 1 is also responsible for expert reactions to domain specific problems. System 2 is the antithisis of system 1. It is slow, effortful and logical, and it analyzes new problems and stimuli that system 1 was incapable of handling, or was proven to have handled incorrectly. Due to the effortful nature of system 2, most decisions, predictions, judgements and reactions are made by system 1, the quick and intuitive mode of thinking. In order to avoid activating the slow and effortful system 2, there exist a list of heuristics that allow individuals to reach decisions using only system 1, including framing, availability, loss aversion, and others.
+
+Since system 1 is responsible for quick expert decisions, it is reasonable to believe that when a law enforcement agent attempts to assess whether a standard of probable cause or reasonable suspicion are met, they use the quick and intuitive ``statistician'' that is system one. To place this in context of our frame of probability, this can be viewed as a law enforcement agent estimates the perceived probability $P = f(x_1,...,x_n)$, that is the probability that an observed individual has committed or is going to commit a crime. This probability is estimated based on expert training (police training) and previous similar experiences. Then, the law enforcement agent estimates the values of $p_1$ and $p_2$ based on his or her understanding of the legislation and case law. Lastly, he or she compares the perceived probabilty $P$ with the thresholds $p_1$ and $p_2$ as described in Section \ref{subsec:dueprocess}.
 
 %------------------------------------------------
 
@@ -186,37 +224,40 @@ Until the era of big data began, actions taken by police were based on specific 
 %	MAJOR SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Due Process and Predictive Policing}\label{sec:mainbody} % Major section
-As previously mentioned, predictive policing is an extention of big data into the field of policing and law enforcement. As such, it inherits many of the problems that big data exhitbits, such as a lack of transparency and issues of bias. In addition to these issues, the application of big data to the realm of policing creates whole new questions, such as the question of how effectiveness is measured, and what role probability and statistics plays in the standards of due process, such as reasonable suspicion and probable cause. In addition, mistakes in law enforcement action taken in response to the predictions made carry potentially high costs to law enforcement and private citizens alike. In this section, these issues will be explored and addressed, and will be tied back to the cases mentioned in Section \ref{sec:introduction}.
+\section{The Novelty of Predictive Policing}\label{sec:oldvsnew} % Major section
+%As previously mentioned, predictive policing is an extention of big data into the field of policing and law enforcement. As such, it inherits many of the problems that big data exhitbits, such as a lack of transparency and issues of bias. In addition to these issues, the application of big data to the realm of policing creates whole new questions, such as the question of how effectiveness is measured, and what role probability and statistics plays in the standards of due process, such as reasonable suspicion and probable cause. In addition, mistakes in law enforcement action taken in response to the predictions made carry potentially high costs to law enforcement and private citizens alike. In this section, these issues will be explored and addressed, and will be tied back to the cases mentioned in Section \ref{sec:introduction}.
 
-\subsection{Transparency} \label{subsec:transparency}
-One historical problem that big data struggles with is the problem of transparency. In many realms in which big data is used, such as credit reporting, advertising, data brokers, employment, housing and others, decisions made based on prediction algorithms affect the lives of countless individuals. However, due to claims of intellectual property and trade secrests individuals have no ability to peer into the machines that dictate the directions of certain aspects of their lives. Worse, even when individuals are not blocked by legal and business challenges, often times peering into an algorithm does nothing to help an individual to understand why a particular classification was made. Part of this lies in the fact that the prediction algorithms are hard to understand by a layperson, but part of it also lies in the technology itself. 
+\subsection{Similarities} \label{subsec:Similarities}
+%One historical problem that big data struggles with is the problem of transparency. In many realms in which big data is used, such as credit reporting, advertising, data brokers, employment, housing and others, decisions made based on prediction algorithms affect the lives of countless individuals. However, due to claims of intellectual property and trade secrests individuals have no ability to peer into the machines that dictate the directions of certain aspects of their lives. Worse, even when individuals are not blocked by legal and business challenges, often times peering into an algorithm does nothing to help an individual to understand why a particular classification was made. Part of this lies in the fact that the prediction algorithms are hard to understand by a layperson, but part of it also lies in the technology itself. 
 
-One large part of the big data aparatus is the application of machine learning, or an area of statistics and computer science in which computers determine correlations between input features and predicted labels. %TODO ADD AN EXAMPLE.
-One of the great strengths of machine learning is to find correlations that human experts cannot. This is done by the pure computational power that a machine possesses and people do not. However, this strength is also a great weakness. Due to the fact that a machine can predict based on input patterns that may escape a human expert, a large amount of opacity enters the system, even when the engineers and statisticians themselves are involved. Even if a domain expert is able to determine why a prediction algorithm output a certain prediction, this solution is not scalable. The entire purpose of big data is to deal with quantities of data that are impossible for human teams to sift through, making it difficult for companies and agencies that employ big data techniquest to verify the accuracy and fairness of a prediction or classification.
+%One large part of the big data aparatus is the application of machine learning, or an area of statistics and computer science in which computers determine correlations between input features and predicted labels. %TODO ADD AN EXAMPLE.
+%One of the great strengths of machine learning is to find correlations that human experts cannot. This is done by the pure computational power that a machine possesses and people do not. However, this strength is also a great weakness. Due to the fact that a machine can predict based on input patterns that may escape a human expert, a large amount of opacity enters the system, even when the engineers and statisticians themselves are involved. Even if a domain expert is able to determine why a prediction algorithm output a certain prediction, this solution is not scalable. The entire purpose of big data is to deal with quantities of data that are impossible for human teams to sift through, making it difficult for companies and agencies that employ big data techniquest to verify the accuracy and fairness of a prediction or classification.
 
-This opaquness poses a unique challenge for law enforcement purposes. As seen in the breakdown of procedural due process mentioned above, the justice system of liberal democracies requires a large amount of transparency. Individuals who have had an action taken against them must be able to defend themselves, and as such they need to know the reasons that lead to a particular action being taken. As predictive policing features more prominently in our justice system, it will begin to affect more and more police actions. As such, the police will need to be able to justify their actions and provide individuals with the evidence that was collected that allowed the police to do so. However, due to the opaque nature of big data such disclosures will be exceedingly difficult, if not impossible. This leads one to ask how much, if at all, should opaque big data classifications be used to guide police actions? By the breakdown of procedural due process given above, it would seem that the lack of transparency in predictive policing methods may threaten the liberties of an accused individual, and may even place the justification of law enforcement's actions into question.
+%This opaquness poses a unique challenge for law enforcement purposes. As seen in the breakdown of procedural due process mentioned above, the justice system of liberal democracies requires a large amount of transparency. Individuals who have had an action taken against them must be able to defend themselves, and as such they need to know the reasons that lead to a particular action being taken. As predictive policing features more prominently in our justice system, it will begin to affect more and more police actions. As such, the police will need to be able to justify their actions and provide individuals with the evidence that was collected that allowed the police to do so. However, due to the opaque nature of big data such disclosures will be exceedingly difficult, if not impossible. This leads one to ask how much, if at all, should opaque big data classifications be used to guide police actions? By the breakdown of procedural due process given above, it would seem that the lack of transparency in predictive policing methods may threaten the liberties of an accused individual, and may even place the justification of law enforcement's actions into question.
 
-\subsection{Biases}\label{subsec:biases}
-Another historical problem of big data is the introduction of biases. Though many proponents of big data claim that the introduction of statistical algorithms leaves little to no room for human bias, this is simply not the case.\cite{hardt} As mentioned previously, machine learning, which finds the correlations between inputs and classification labels, plays a large role in the aparatus of big data. Machine learning is split into the following phases:
+\subsection{Differences}\label{subsec:differences}
 
-\begin{enumerate}
-\item Data collection.
-\item Feature creation.
-\item Feature selection and/or extraction.
-\item Data labeling.
-\item Algorithm training.
-\item Algorithm testing and validation.
-\item Production and classification.
-\end{enumerate}
+%Until the era of big data began, actions taken by police were based on specific facts and tips provided by the circumstances of the crime or by witnesses of the crime the law enforcement agents were investigating. Because of this, police were able to articulate specific facts and circumstances that lead to the reasonable suspicion for brief stops or detentions and probable cause in order to obtain a warrant. However, the current use of big data challenges these well established standards and overall due process. This paper will attempt to address how big data and predictive policing change due process and the standards of reasonable suspicion and probable cause. 
 
-Though many proponents claim that raw data is discovered and fed into the algorithm, the steps above show that data goes through a lot of processing and transformation before the classification step is reached. As shown in step 2, human intervention is usually need to decide what aspects of the data become features. Though domain experts are usually consulted in this step, this interaction has the capability to introduce a large amount of human bias. For example, in Perry's report on predictive policing \cite{perryetal}, the idea of using quantitative measures such as the LSI-R in predictive policing algorithms is discussed. Though this could be seen as a positive step to introduce quantitative measures into the predictive policing, there are examples of bias even in the LSI-R. For example, in the South Dekota Department of Human Services LSI-R training slides, one of the included predictors of future crime is ``belonging to some minority groups.'' \cite{dekota} If the LSI-R scoring is based on racial bias, and the LSI-R numerical output is included as a feature in predictive policing, the output of the policing algorithm is at least in part based on the race of the individual, which is commonly accepted as wrong and unjust.  %TODO cite raw data is an oxymoron.
+%Another historical problem of big data is the introduction of biases. Though many proponents of big data claim that the introduction of statistical algorithms leaves little to no room for human bias, this is simply not the case.\cite{hardt} As mentioned previously, machine learning, which finds the correlations between inputs and classification labels, plays a large role in the aparatus of big data. Machine learning is split into the following phases:
 
-In addition to being introduced at the feature creation and selection/extraciton phases, bias can also be introduced at the label phase. As shown in the series of steps above, machine learning algorithms must be trained. In many cases, supervised training algorithms are used, meaning that many instances of data and the ``correct'' output label are fed to the learning algorithm and a classification model is built based on this data. These labels, however, are not ``discovered.'' They are frequently assigned by domain experts and heuristic methods. This is another area in which human bias can find its way into big data.
+%\begin{enumerate}
+%\item Data collection.
+%\item Feature creation.
+%\item Feature selection and/or extraction.
+%\item Data labeling.
+%\item Algorithm training.
+%\item Algorithm testing and validation.
+%\item Production and classification.
+%\end{enumerate}
+
+%Though many proponents claim that raw data is discovered and fed into the algorithm, the steps above show that data goes through a lot of processing and transformation before the classification step is reached. As shown in step 2, human intervention is usually need to decide what aspects of the data become features. Though domain experts are usually consulted in this step, this interaction has the capability to introduce a large amount of human bias. For example, in Perry's report on predictive policing \cite{perryetal}, the idea of using quantitative measures such as the LSI-R in predictive policing algorithms is discussed. Though this could be seen as a positive step to introduce quantitative measures into the predictive policing, there are examples of bias even in the LSI-R. For example, in the South Dekota Department of Human Services LSI-R training slides, one of the included predictors of future crime is ``belonging to some minority groups.'' \cite{dekota} If the LSI-R scoring is based on racial bias, and the LSI-R numerical output is included as a feature in predictive policing, the output of the policing algorithm is at least in part based on the race of the individual, which is commonly accepted as wrong and unjust.  %TODO cite raw data is an oxymoron.
+
+%In addition to being introduced at the feature creation and selection/extraciton phases, bias can also be introduced at the label phase. As shown in the series of steps above, machine learning algorithms must be trained. In many cases, supervised training algorithms are used, meaning that many instances of data and the ``correct'' output label are fed to the learning algorithm and a classification model is built based on this data. These labels, however, are not ``discovered.'' They are frequently assigned by domain experts and heuristic methods. This is another area in which human bias can find its way into big data.
 
 %Claims of unbiased accuracy by proponents of big data, mixed with the lack of transparency that comes hand-in-hand with the technology, makes this a dangerous tool for use by law enforcement officials.
 
-\textbf{NOTE: In the remainder of this section I will tie in these issues with predictive policing and due process.}
+%\textbf{NOTE: In the remainder of this section I will tie in these issues with predictive policing and due process.}
 %------------------------------------------------
 %
 % DELETED CONTENT
@@ -243,11 +284,9 @@ In addition to being introduced at the feature creation and selection/extraciton
 %
 %------------------------------------------------
 
-\subsection{Future Discussion Areas}
-I ran out of time and space while writing this paper. In addition to the issues mentioned above, I plan on touching on the problems of effectiveness and accuracy measurement, the role of probability in due process and the introduction of human error to policing practices.
 
-\section{Conclusion}\label{sec:conclusion}
-This paper has analyzed and discussed the application of predictive policing and its effect on the realm of due process. As part of this, it has discussed what predictive policing is and how it is used, what due process is and why it is important in liberal democracies, and finally the drawbacks of big data and predictive policing, and how these drawbacks effect due process.
+\section{Verdict and Conclusion}\label{sec:conclusion}
+%This paper has analyzed and discussed the application of predictive policing and its effect on the realm of due process. As part of this, it has discussed what predictive policing is and how it is used, what due process is and why it is important in liberal democracies, and finally the drawbacks of big data and predictive policing, and how these drawbacks effect due process.
 
 \nocite{*}
 %------------------------------------------------
@@ -300,13 +339,14 @@ This paper has analyzed and discussed the application of predictive policing and
 
 
 %----------------------------------------------------------------------------------------
-\newpage
-\center{\huge{NOTES}}
-\begin{itemize}
-\item Metrics - how to measure?
-\item Schultz and Crawford - definitions
-\item Why due process is important in a liberal democracy - Look at this
-\item Incursions of data science into the methodologies and procedures and how they may challenge the meaning/foundation of these.
-\item Need to fix and find citations
-\end{itemize}
+
+%\newpage
+%\center{\huge{NOTES}}
+%\begin{itemize}
+%\item Metrics - how to measure?
+%\item Schultz and Crawford - definitions
+%\item Why due process is important in a liberal democracy - Look at this
+%\item Incursions of data science into the methodologies and procedures and how they may challenge the meaning/foundation of these.
+%\item Need to fix and find citations
+%\end{itemize}
 \end{document}
